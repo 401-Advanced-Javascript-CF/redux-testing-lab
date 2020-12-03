@@ -1,12 +1,10 @@
 import React from 'react';
 import { selectProducts } from '../store/products.js';
 import { connect } from 'react-redux';
+import { addToCart } from '../store/cart.js'
 
 function Products(props){
-    console.log(props);
-let display;
-    let stuff = props.products.products.map((idk, index) => props.active.displayName === idk.category ?<li key={index}>{idk.name}</li>: "")
-console.log(stuff)
+    let stuff = props.products.products.map((idk, index) => props.active.displayName === idk.category ?<><li key={index}>{idk.name}</li><button onClick={() => props.addToCart(idk)}>Add to Cart</button></>: "")
  
 
     return (
@@ -22,5 +20,8 @@ const mapStateToProps = (state) => ( {
   active: state.category.active
 })
 
-const mapDispatchToProps = {selectProducts}
+const mapDispatchToProps = ({
+    selectProducts,
+    addToCart
+})
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
