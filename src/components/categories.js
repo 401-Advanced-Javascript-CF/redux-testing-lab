@@ -3,7 +3,7 @@ import { selectCategory } from '../store/categories.js';
 import { connect } from 'react-redux';
 
 function Categories(props){
-    console.log(props.category.category);
+    // console.log(props.category.category);
 let stuff = props.category.category.map((idk, index) => <li><a key={index} href="#" onClick={()=> props.selectCategory(idk)} >{idk.displayName}</a></li>);
 
     return (
