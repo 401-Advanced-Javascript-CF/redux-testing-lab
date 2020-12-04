@@ -1,0 +1,6 @@
+.header li{
+    margin-right: 50px;
+    list-style-type: none;
+    float: right;
+    font-size: 20px;
+}

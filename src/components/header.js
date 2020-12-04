@@ -3,10 +3,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-
+import { connect } from 'react-redux';
+import './header.css';
 
 function Header(props){
-
     return (
         <>
         <CssBaseline />
@@ -17,8 +17,17 @@ function Header(props){
             </Typography>
           </Toolbar>
         </AppBar>
+        <ul className='header'>
+          <li>
+            Cart: ({props.count})
+          </li>
+        </ul>
         </>
     )
 }
+const mapStateToProps = (state) => ( {
+  count: state.cart.total
+})
 
-export default Header;
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
