@@ -1,10 +1,22 @@
 const initialState = {
-    products: [{name: 'Rampage', inventoryCount: 5, price: 10, category: 'Staffordshire Terrier'}],
+    products: [
+      {name: 'Rampage', inventoryCount: 5, price: 10, category: 'Staffordshire Terrier', id: 1},
+      {name: 'Spike', inventoryCount: 6, price: 20, category: 'German Shepherd', id: 2},
+      {name: 'Boots', inventoryCount: 3, price: 200, category: 'Border Collie', id: 3}
+    ],
+    current: {}
   }
   
   export const selectProducts = (stuff) => {
     return {
       type: 'Products',
+      payload: stuff
+    }
+  }
+  export const selectProductsById = (stuff) => {
+    console.log(stuff)
+    return {
+      type: 'ProductsId',
       payload: stuff
     }
   }
@@ -46,8 +58,18 @@ const initialState = {
             return {products: [...newProducts2]}
           }
         }
-          return {...state}
-       default:
+          return {...state};
+       case 'ProductsId':
+         console.log('i made it');
+         for(let ele of state.products){
+           if(ele.id === payload){
+             return {...state, current: ele}
+           }
+           else {
+             return {...state}
+           }
+         }
+        default:
          return state;
     }
   }

@@ -23,6 +23,12 @@ const initialState = {
       payload: stuff
     }
   }
+  export const removeFromAllCart = (stuff) => {
+    return {
+      type: 'REMOVEALLFROM_CART',
+      payload: stuff
+    }
+  }
   
   
   // What should be done to our initial state?
@@ -52,6 +58,9 @@ const initialState = {
        case 'REMOVE_FROM_CART':
         let removal = state.cart.filter(value => value.name !== payload.name)
            return {total: state.total - payload.count, cart: [...removal]}
+           case 'REMOVEALLFROM_CART':
+        
+           return {total: 0, cart: []}
        default:
          return state;
     }

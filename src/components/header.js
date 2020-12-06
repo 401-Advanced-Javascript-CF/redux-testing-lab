@@ -4,6 +4,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import './header.css';
 
 function Header(props){
@@ -19,7 +21,7 @@ function Header(props){
         </AppBar>
         <ul className='header'>
           <li>
-            Cart: ({props.count})
+            <Link to='/cart'>Cart: ({props.count})</Link>
           </li>
         </ul>
         </>
